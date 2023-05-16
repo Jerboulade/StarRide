@@ -21,7 +21,11 @@ public class Route {
     private Conveyance  conveyance;
 
 
-    private List<User>  passengers;
+    //private List<User>  passengers;
 
     private String      company;
+
+    @ManyToOne
+    @JoinColumn(name = "journey_id")
+    private Journey     journey;
 }

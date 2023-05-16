@@ -33,6 +33,7 @@ public class Activity {
 
     private String          description;
 
-    @Column(name = "step_id")
+    @ManyToOne
+    @JoinColumn(name = "step_id")
     private Step            step;
 }

@@ -35,6 +35,7 @@ public class Step {
     private StepType        type;
 
     @OneToMany
-    @JoinColumn(name = "step_id")
     private List<Activity>  activities;
+
+
 }
