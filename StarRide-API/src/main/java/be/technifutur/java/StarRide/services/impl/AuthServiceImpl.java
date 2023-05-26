@@ -8,7 +8,9 @@ import be.technifutur.java.StarRide.services.AuthService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthServiceImpl implements AuthService {
 
     private final AuthenticationManager authenticationManager;
@@ -29,6 +31,8 @@ public class AuthServiceImpl implements AuthService {
     public JWTHolder login(LoginForm form) {
         Authentication auth = new UsernamePasswordAuthenticationToken(form.getUsername(), form.getPassword());
         authenticationManager.authenticate(auth);
-        return new JWTHolder(jwtProvider.createToken(auth), form.getUsername());
+        JWTHolder holder = new JWTHolder(jwtProvider.createToken(auth), form.getUsername());
+        System.out.println(holder.getUsername() +" "+ holder.getToken());
+        return holder;
     }
 }

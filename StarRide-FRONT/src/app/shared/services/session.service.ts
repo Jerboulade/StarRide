@@ -9,7 +9,7 @@ export class SessionService {
   private token$ = new BehaviorSubject<{ token: string, id: string } | null>(null)
 
   constructor() {
-    const token = localStorage.getItem('session_token');
+    const token = localStorage.getItem('session_info');
     if (token) {
       this.token$.next(JSON.parse(token));
     }
@@ -26,9 +26,9 @@ export class SessionService {
 
   private handleStorage(token: { id: string, token: string } | null) {
     if (token) {
-      localStorage.setItem("session_token", JSON.stringify(token));
+      localStorage.setItem("session_info", JSON.stringify(token));
     } else {
-      localStorage.removeItem("session_token");
+      localStorage.removeItem("session_info");
     }
   }
 }
