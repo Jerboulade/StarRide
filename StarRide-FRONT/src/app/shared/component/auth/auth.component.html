@@ -1,4 +1,10 @@
-<form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+
+<div *ngIf="registered == undefined">
+  <button (click)="registered = true">login</button>
+  <button (click)="registered = false">register</button>
+</div>
+
+<form *ngIf="registered" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
   <div class="input-field">
       <label for="email" class="active">Email</label>
       <input name="email" formControlName="email">
@@ -8,4 +14,20 @@
       <input type="password" name="password" formControlName="password">
   </div>
   <button type="submit" class="btn btn-success">Log in</button>
+</form>
+
+<form *ngIf="registered == false" [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+  <div class="input-field">
+      <label for="email" class="active">Email</label>
+      <input name="email" formControlName="email">
+  </div>
+  <div class="input-field">
+      <label for="password" class="active">Password</label>
+      <input type="password" name="password" formControlName="password">
+  </div>
+  <div class="input-field">
+    <label for="confirm" class="active">Confirm Password</label>
+    <input type="password" name="confirm" formControlName="confirm">
+</div>
+  <button type="submit" class="btn btn-success">Register</button>
 </form>

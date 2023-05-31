@@ -14,11 +14,18 @@ import { environment } from 'src/environments/environment';
 export class AuthComponent {
 
   loginForm : FormGroup;
+  registerForm : FormGroup;
+  registered : boolean | undefined = undefined;
 
   constructor(private _auth : AuthService, private _router : Router) {
     this.loginForm = new FormGroup({
       email : new FormControl('', [Validators.required]),
       password : new FormControl('', Validators.required)
+    })
+    this.registerForm = new FormGroup({
+      email : new FormControl('', [Validators.required]),
+      password : new FormControl('', Validators.required),
+      confirm : new FormControl('', Validators.required)
     })
   }
 
@@ -29,6 +36,16 @@ export class AuthComponent {
       }
     });
     //console.log(this.loginForm.value['email'] +" "+ this.loginForm.value['password'])
+  }
+
+  submitRegister() {
+    console.log(this.registerForm.value['email'], this.registerForm.value['password'], this.registerForm.value['confirm']);
+
+    this._auth.register(this.registerForm.value['email'], this.registerForm.value['password'], this.registerForm.value['confirm']).subscribe({
+      next : () => {
+        this._router.navigateByUrl('/');
+      }
+    });
   }
 
 }

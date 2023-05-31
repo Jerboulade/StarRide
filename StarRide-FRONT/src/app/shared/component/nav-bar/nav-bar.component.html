@@ -3,15 +3,16 @@
       <a href="#" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/destinations" routerLinkActive="active">Destinations</a></li>
         <li><a *ngIf="!isConnected"routerLink="login" routerLinkActive="active">Login</a></li>
         <li><a *ngIf="isConnected" (click)="logout()">Logout</a></li>
-        <li *ngIf="isConnected">
+        <!-- <li *ngIf="isConnected">
           <select>
             <option>Choose your option</option>
             <option><a (click)="logout()">Logout</a></option>
             <option><a (click)="logout()">Logout</a></option>
           </select>
-        </li>
+        </li> -->
       </ul>
   </div>
 </nav>

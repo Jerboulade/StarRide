@@ -24,5 +24,11 @@ export class AuthService {
     this._session.logout();
   }
 
-  register(){}
+  register(email : string, password : string, confirm : string) : Observable<any>{
+    console.log(email, password, confirm);
+
+    return this._http.post<{ token : string, username : string }>(`${ environment.base_uri }/auth/register`, { username: email, password: password, confirmPassword : confirm }).pipe(
+      tap(data => this._session.login({ token : data.token, id : data.username }))
+    )
+  }
 }

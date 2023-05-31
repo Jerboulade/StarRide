@@ -7,6 +7,6 @@ import be.technifutur.java.StarRide.models.form.RegistrationForm;
 
 public interface AuthService {
 
-    void register(RegistrationForm form);
     JWTHolder login(LoginForm form);
+    JWTHolder register(RegistrationForm form);
 }

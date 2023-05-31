@@ -3,6 +3,7 @@ package be.technifutur.java.StarRide.models.entity;
 import be.technifutur.java.StarRide.models.enums.StepType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +34,9 @@ public class Step {
     @Enumerated
     @Column(nullable = false)
     private StepType        type;
+
+    @PositiveOrZero
+    private Integer         price;
 
     @OneToMany
     private List<Activity>  activities;

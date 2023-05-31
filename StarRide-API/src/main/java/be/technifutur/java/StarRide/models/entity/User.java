@@ -25,7 +25,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String  password;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String  email;
 
     @OneToMany
